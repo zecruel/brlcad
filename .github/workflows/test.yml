@@ -1,0 +1,32 @@
+name: CadZinho CI
+
+on: workflow_dispatch
+jobs:
+  windows-build:
+    defaults:
+      run:
+        shell: msys2 {0}
+    runs-on: windows-latest
+
+    steps:
+    - name: Setup MSYS2
+      uses: msys2/setup-msys2@v2
+      with:
+          update: true
+          install: >-
+            base-devel
+            git
+            gcc
+            make
+            cmake
+            p7zip
+            mingw-w64-x86_64-toolchain
+            mingw64/mingw-w64-x86_64-SDL2
+            mingw64/mingw-w64-x86_64-SDL2_net
+            mingw64/mingw-w64-x86_64-glew
+    - uses: actions/checkout@v4.1.1
+    - run: |
+        mkdir brlcad/build
+        cd brlcad/build
+    - run: cmake .. -DBRLCAD_COMPONENTS=librt
+    - run: ls
