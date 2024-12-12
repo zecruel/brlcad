@@ -1,4 +1,4 @@
-name: CadZinho CI
+name: test
 
 on: workflow_dispatch
 jobs:
@@ -26,7 +26,7 @@ jobs:
             mingw64/mingw-w64-x86_64-glew
     - uses: actions/checkout@v4.1.1
     - run: |
-        mkdir brlcad/build
-        cd brlcad/build
-    - run: cmake .. -DBRLCAD_COMPONENTS=librt
-    - run: ls
+        mkdir build
+        cd build
+        cmake .. -DBRLCAD_COMPONENTS=librt
+        ls
