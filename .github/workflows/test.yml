@@ -20,13 +20,9 @@ jobs:
             make
             cmake
             p7zip
-            mingw-w64-x86_64-toolchain
-            mingw64/mingw-w64-x86_64-SDL2
-            mingw64/mingw-w64-x86_64-SDL2_net
-            mingw64/mingw-w64-x86_64-glew
     - uses: actions/checkout@v4.1.1
     - run: |
         mkdir build
         cd build
-        cmake .. -DBRLCAD_COMPONENTS=librt
+        cmake .. -DBRLCAD_COMPONENTS=libbu
         ls
